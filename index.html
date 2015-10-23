@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XSMC</title>
+  <meta charset="utf-8">
+  <meta name="description" content="XSMC">
+  <meta name="author" content="SDMitchell">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>XSMC</h1>
+    <h2>The eXtremely Simple Mortgage Calculator</h2>
+    <p>SDMitchell<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="class" id="id" style="background:url(StockPhoto-HousePercent.jpg);">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #F08080;
+}
+</style>
+
+<h2>Welcome to the XSMC!</h2>
+
+<p>When looking at a mortgage, it is always important to not only know if you can afford the month-to-month payments, but also to realize just how much the mortgage will cost you in interest over the entirety of the loan. Should I make a bigger downpayment? Will I accumulate more wealth if I invest a portion in the stock markets instead of using my liquid assets as a downpayment? Should I keep renting until I can accumulate a larger downpayment?</p>
+
+<p>The first step to all of this is to compute the amount of interest you will be paying over the lifetime of your mortgage and the XSMC application is here to help.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:url(StockPhoto-HousePercent.jpg);">
+  <hgroup>
+    <h2>Some Mathematics</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Nobody promised there wouldn&#39;t be math - where did you get that idea? What we are promising is to do that math FOR you. Let&#39;s take a look at how many payments you&#39;ll need to make if you already know your monthly budget; here is the formula:</p>
+
+<p>\[\frac{log(M) - log(M - \frac{P * I}{12})}{log(1 + \frac{I}{12})}\]</p>
+
+<p>Where<br>
+    M - The monthly payment you are willing to pay<br>
+    I - The annual interest rate of the loan (as a decimal)<br>
+    P - The original amount to be borrowed (the principal)  </p>
+
+<p>Too. Much. Math. This is where XSMC comes into play - you give us the numbers and we can figure all of this out for you!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:url(StockPhoto-HousePercent.jpg);">
+  <hgroup>
+    <h2>Even Worse - Some Code</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here is a bit of the secret sauce - what makes XMBC tick. But not too much as we only have so much room here!</p>
+
+<pre><code class="r">yourMonthlyPayment &lt;- 1400
+yourInterestRate &lt;- 2.59
+yourPrincipal &lt;- 159000
+payments &lt;- NumberOfPeriodsRemaining(yourMonthlyPayment, yourInterestRate, yourPrincipal)
+interestPaid &lt;- InterestPaid(yourMonthlyPayment, yourInterestRate, yourPrincipal, payments)
+</code></pre>
+
+<p>So after crunching through a few formulas like the one we looked at earlier, we can see that in our example the number of months needed to pay this mortgage would be 131 months and in total we would wind up paying $23599.16 in interest. Too easy!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:url(StockPhoto-HousePercent.jpg);">
+  <hgroup>
+    <h2>Pictures!</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Numbers are all well and good and we need to know them, but sometimes a picture is worth a thousand words. Since we&#39;re running out of space for those thousand words, let&#39;s finish off with a plot of just how much interest you would be paying over time for the previous example. XSMC does this interactively with slider controls so you can do this all very easily to evaluate your options:</p>
+
+<p><img src="assets/fig/The%20Plot%20Thickens-1.png" alt="plot of chunk The Plot Thickens"> </p>
+
+<p>And there you have it - all the news (good or bad) around the interest you&#39;ll be paying for that fabulous home. Good Luck!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Some Mathematics'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Even Worse - Some Code'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Pictures!'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
